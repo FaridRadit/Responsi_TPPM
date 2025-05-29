@@ -18,20 +18,11 @@ class _UpdatemovieState extends State<Updatemovie> {
   final genre = TextEditingController();
   final director = TextEditingController();
   final synopsis = TextEditingController();
+  final movieUrl=TextEditingController();
+  final imgUrl=TextEditingController();
   @override
    Future<void> updateMovie() async {
-    if (title.text.trim().isEmpty ||
-        year.text.trim().isEmpty ||
-        genre.text.trim().isEmpty ||
-        director.text.trim().isEmpty ||
-        rating.text.trim().isEmpty||
-        synopsis.text.trim().isEmpty
-        ) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("All data should be filled")));
-      return;
-    }
-
+    
     movie newdata = movie(
       id: widget.Movie.id,
       title: title.text,
@@ -40,6 +31,8 @@ class _UpdatemovieState extends State<Updatemovie> {
       director: director.text,
       rating: double.parse(rating.text),
       synopsis: synopsis.text,
+      movieUrl: movieUrl.text,
+      imgUrl: imgUrl.text
     );
 
     try {
@@ -102,6 +95,23 @@ class _UpdatemovieState extends State<Updatemovie> {
               ),
              
               SizedBox(height: 10,),
+               TextField(
+                controller: movieUrl,
+                decoration: const InputDecoration(
+                  labelText: "movieUrl",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 10,),
+               SizedBox(height: 10,),
+               TextField(
+                controller: imgUrl,
+                decoration: const InputDecoration(
+                  labelText: "Img Url",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+                SizedBox(height: 10,),
               TextField(
                 controller: rating,
                 decoration: const InputDecoration(

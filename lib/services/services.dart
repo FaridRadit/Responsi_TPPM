@@ -25,7 +25,7 @@ class UserApi {
 
   }
   static Future<Map<String,dynamic>> updatemovie(movie movie) async {
-    final response=await http.put(
+    final response=await http.patch(
       Uri.parse('$url/${movie.id}'),
       headers: {
         'Content-type' : 'application/json',
